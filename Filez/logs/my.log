@@ -1,0 +1,5 @@
+2020-07-13 11:08:37:DEBUG main org.apache.http.headers - << X-HIT: nginx-ingress-controller-5667888b96-2w2gx
+2020-07-13 11:08:37:DEBUG main org.apache.http.client.protocol.ResponseProcessCookies - Cookie accepted: "[version: 0][name: X-LENOVO-SESS-ID][value: nsfmic6irvugfoqkvj85g0eo52][domain: qa-t3.vips100.com][path: /][expiry: null]". 
+2020-07-13 11:08:37:DEBUG main org.apache.http.client.protocol.ResponseProcessCookies - Cookie accepted: "[version: 0][name: language][value: zh][domain: qa-t3.vips100.com][path: /][expiry: Tue Jul 14 23:05:17 CST 2020]". 
+2020-07-13 11:08:37:DEBUG main org.apache.http.client.protocol.ResponseProcessCookies - Cookie accepted: "[version: 0][name: language][value: zh][domain: qa-t3.vips100.com][path: /][expiry: Tue Jul 14 23:05:17 CST 2020]". 
+2020-07-13 11:08:37:DEBUG main com.filez.zbox.console.Log - response：org.apache.http.message.BasicHttpResponse@16d04d3d
