@@ -1,8 +1,12 @@
-package testcase;
+package com.filez.zbox.console.testcase;
 
 
 import com.filez.zbox.console.Asserts.AssertBase;
-import org.apache.http.*;
+import org.apache.commons.io.IOUtils;
+import org.apache.http.Header;
+import org.apache.http.HeaderElement;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
@@ -14,7 +18,6 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.params.CoreProtocolPNames;
 import org.apache.log4j.Logger;
-
 import org.junit.Assert;
 import org.testng.annotations.Test;
 
@@ -26,7 +29,6 @@ import java.util.List;
 public class Log {
     public static final Logger logger = Logger.getLogger(Log.class);
 
-    private static HttpResponse response;
     public static String cookies;
 
 
@@ -42,7 +44,7 @@ public class Log {
         request_params.add(new BasicNameValuePair("password", "123qwe"));
         request_params.add(new BasicNameValuePair("loginType", "0"));
         httppost.setEntity(new UrlEncodedFormEntity(request_params, "UTF-8"));
-        response = httpClient.execute(httppost);
+        HttpResponse response = httpClient.execute(httppost);
         Assert.assertNotNull(response);
         Header[] headers = response.getHeaders("Set-Cookie");
         Assert.assertNotNull(headers);
@@ -62,7 +64,7 @@ public class Log {
     }
 
 
-    @Test(description = "IP管控",groups = {"smoke","IP"},enabled = true)
+    @Test(description = "二次验证",groups = {"smoke","IP"},enabled = true)
     public static void second_auth ()throws IOException {
         SSLSocketFactory.getSocketFactory().setHostnameVerifier(new AllowAllHostnameVerifier());
         String loginURL ="https://qa-t3.vips100.com/v2/account/second_auth/set";
@@ -79,10 +81,9 @@ public class Log {
         request_params.add(new BasicNameValuePair("uid", "1"));
         request_params.add(new BasicNameValuePair("second_auth", "1"));
         UrlEncodedFormEntity urlEncodedFormEntity = new UrlEncodedFormEntity(request_params, "UTF-8");
-        urlEncodedFormEntity.setContentEncoding("UTF-8");
         request.setEntity(urlEncodedFormEntity);
         HttpResponse response = httpClient.execute(request);
-        //String string = IOUtils
+        String string = IOUtils.toString(response.getEntity().getContent());
         //logger.debug(string);
         AssertBase.assertCode(response);
         logger.debug(response);
@@ -91,7 +92,7 @@ public class Log {
 
 
 
-    @Test(description = "二次验证",groups = {"smoke","IP"},enabled = true)
+    @Test(description = "IP管控",groups = {"smoke","IP"},enabled = true)
     public static void security()throws IOException {
         SSLSocketFactory.getSocketFactory().setHostnameVerifier(new AllowAllHostnameVerifier());
         String loginURL ="https://qa-t3.vips100.com/v2/account/security/restrict/set";
@@ -104,8 +105,8 @@ public class Log {
         request_params.add(new BasicNameValuePair("uid", "1"));
         request_params.add(new BasicNameValuePair("category", "device"));
         request.setEntity(new UrlEncodedFormEntity(request_params, "UTF-8"));
-        response = httpClient.execute(request);
-        Assert.assertEquals(response.getStatusLine().getStatusCode(),200);
+        HttpResponse response = httpClient.execute(request);
+        AssertBase.assertCode(response);
         logger.debug(response);
     }
 }
