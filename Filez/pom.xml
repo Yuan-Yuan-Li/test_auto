@@ -64,6 +64,40 @@
             <artifactId>commons-httpclient</artifactId>
             <version>3.0.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>8.0.32</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.5</version>
+        </dependency>
     </dependencies>
+
+    <profiles>
+        <profile>
+            <id>Online</id>
+        </profile>
+        <profile>
+            <id>T2</id>
+        </profile>
+        <profile>
+            <id>T3</id>
+        </profile>
+        <profile>
+            <id>T4</id>
+        </profile>
+        <profile>
+            <id>T5</id>
+        </profile>
+        <profile>
+            <id>T6</id>
+        </profile>
+        <profile>
+            <id>T7</id>
+        </profile>
+    </profiles>
 
 </project>

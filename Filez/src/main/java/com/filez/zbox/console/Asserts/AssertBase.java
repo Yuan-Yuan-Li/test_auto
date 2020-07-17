@@ -1,4 +1,4 @@
-package Asserts;
+package com.filez.zbox.console.Asserts;
 import org.apache.http.HttpResponse;
 import org.testng.Assert;
 
