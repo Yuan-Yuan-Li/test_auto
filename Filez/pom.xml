@@ -79,24 +79,71 @@
     <profiles>
         <profile>
             <id>Online</id>
+            <build>
+                <filters>
+                    <filter>src/resourcr/conf/Online.properties</filter>
+                </filters>
+            </build>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>1</value>
+                </property>
+            </activation>
         </profile>
         <profile>
             <id>T2</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>2</value>
+                </property>
+            </activation>
         </profile>
         <profile>
             <id>T3</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>3</value>
+                </property>
+            </activation>
         </profile>
         <profile>
             <id>T4</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>4</value>
+                </property>
+            </activation>
         </profile>
         <profile>
             <id>T5</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>5</value>
+                </property>
+            </activation>
         </profile>
         <profile>
             <id>T6</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>6</value>
+                </property>
+            </activation>
         </profile>
         <profile>
             <id>T7</id>
+            <activation>
+                <property>
+                    <name>env</name>
+                    <value>7</value>
+                </property>
+            </activation>
         </profile>
     </profiles>
 
