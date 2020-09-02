@@ -74,77 +74,100 @@
             <artifactId>commons-io</artifactId>
             <version>2.5</version>
         </dependency>
+        <dependency>
+            <groupId>com.typesafe</groupId>
+            <artifactId>config</artifactId>
+            <version>1.4.0</version>
+        </dependency>
     </dependencies>
 
+    <!--环境信息配置-->
     <profiles>
         <profile>
-            <id>Online</id>
-            <build>
-                <filters>
-                    <filter>src/resourcr/conf/Online.properties</filter>
-                </filters>
-            </build>
+            <!--第一套测试环境A-->
+
+            <id>1</id>
+            <!--此处会在Maven中生成一个Profiles的子项，选中则表示在那套环境中执行-->
+            <properties>
+                <environment>Online</environment>
+                <!--此处environmentA会去找environmentA.properties配置文件获取环境的配置信息-->
+            </properties>
             <activation>
-                <property>
-                    <name>env</name>
-                    <value>1</value>
-                </property>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <!--此处为默认环境配置，不勾选时，执行测试类使用该环境-->
+        </profile>
+        <profile>
+            <!--第二套测试环境B-->
+            <id>2</id>
+            <properties>
+                <environment>T2</environment>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
         <profile>
-            <id>T2</id>
+            <!--第二套测试环境B-->
+            <id>3</id>
+            <properties>
+                <environment>T3</environment>
+            </properties>
             <activation>
-                <property>
-                    <name>env</name>
-                    <value>2</value>
-                </property>
+                <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
         <profile>
-            <id>T3</id>
+            <!--第二套测试环境B-->
+            <id>4</id>
+            <properties>
+                <environment>T4</environment>
+            </properties>
             <activation>
-                <property>
-                    <name>env</name>
-                    <value>3</value>
-                </property>
+                <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
         <profile>
-            <id>T4</id>
+            <!--第二套测试环境B-->
+            <id>5</id>
+            <properties>
+                <environment>T5</environment>
+            </properties>
             <activation>
-                <property>
-                    <name>env</name>
-                    <value>4</value>
-                </property>
+                <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
         <profile>
-            <id>T5</id>
+            <!--第二套测试环境B-->
+            <id>6</id>
+            <properties>
+                <environment>T6</environment>
+            </properties>
             <activation>
-                <property>
-                    <name>env</name>
-                    <value>5</value>
-                </property>
+                <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
         <profile>
-            <id>T6</id>
+            <!--第二套测试环境B-->
+            <id>7</id>
+            <properties>
+                <environment>T7</environment>
+            </properties>
             <activation>
-                <property>
-                    <name>env</name>
-                    <value>6</value>
-                </property>
-            </activation>
-        </profile>
-        <profile>
-            <id>T7</id>
-            <activation>
-                <property>
-                    <name>env</name>
-                    <value>7</value>
-                </property>
+                <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
     </profiles>
+
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/resource/conf</directory>
+                <filtering>true</filtering>
+            </resource>
+            
+        </resources>
+    </build>
 
 </project>
