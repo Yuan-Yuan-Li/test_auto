@@ -7,7 +7,7 @@
         </packages>
         <groups>
             <run>
-                <include name="b"/>
+                <include name="a"/>
              </run>
         </groups>
     </test>

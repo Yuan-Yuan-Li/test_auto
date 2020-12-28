@@ -8,6 +8,20 @@
     <artifactId>Filez</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <repositories>
+        <repository>
+            <id>my-repo</id>
+            <name>my repository</name>
+            <url>https://maven.lenovows.com/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>log4j</groupId>
@@ -50,14 +64,9 @@
             <version>2.5</version>
         </dependency>
         <dependency>
-            <groupId>com.googlecode.json-simple</groupId>
-            <artifactId>json-simple</artifactId>
-            <version>1.1.1</version>
-        </dependency>
-        <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
-            <version>1.2.68</version>
+            <version>1.2.70</version>
         </dependency>
         <dependency>
             <groupId>commons-httpclient</groupId>
@@ -83,13 +92,13 @@
 
     <!--环境信息配置-->
     <profiles>
+
         <profile>
             <!--第一套测试环境A-->
-
-            <id>1</id>
+            <id>Online</id>
             <!--此处会在Maven中生成一个Profiles的子项，选中则表示在那套环境中执行-->
             <properties>
-                <environment>Online</environment>
+                <env>Online</env>
                 <!--此处environmentA会去找environmentA.properties配置文件获取环境的配置信息-->
             </properties>
             <activation>
@@ -99,71 +108,63 @@
         </profile>
         <profile>
             <!--第二套测试环境B-->
-            <id>2</id>
+            <id>T2</id>
             <properties>
-                <environment>T2</environment>
+                <env>T2</env>
+                <profiles.active>T2</profiles.active>
             </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
         </profile>
         <profile>
             <!--第二套测试环境B-->
-            <id>3</id>
+            <id>T3</id>
             <properties>
-                <environment>T3</environment>
+                <env>T3</env>
+                <profiles.active>T3</profiles.active>
             </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
         </profile>
         <profile>
             <!--第二套测试环境B-->
-            <id>4</id>
+            <id>T4</id>
             <properties>
-                <environment>T4</environment>
+                <env>T4</env>
+                <profiles.active>T4</profiles.active>
             </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
         </profile>
         <profile>
             <!--第二套测试环境B-->
-            <id>5</id>
+            <id>T5</id>
             <properties>
-                <environment>T5</environment>
+                <env>T5</env>
+                <profiles.active>T5</profiles.active>
             </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
         </profile>
         <profile>
             <!--第二套测试环境B-->
-            <id>6</id>
+            <id>T6</id>
             <properties>
-                <environment>T6</environment>
+                <env>T6</env>
+                <profiles.active>T6</profiles.active>
             </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
         </profile>
         <profile>
             <!--第二套测试环境B-->
-            <id>7</id>
+            <id>T7</id>
             <properties>
-                <environment>T7</environment>
+                <env>T7</env>
+                <profiles.active>T7</profiles.active>
             </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
         </profile>
     </profiles>
 
 
     <build>
+        <finalName>${project.artifactId}</finalName>
+        <filters>
+            <filter>src/resource/conf/${env}.properties</filter>
+        </filters>
         <resources>
             <resource>
-                <directory>src/resource/conf</directory>
+                <directory>src/resources</directory>
                 <filtering>true</filtering>
             </resource>
             

@@ -4,8 +4,8 @@ import org.testng.Assert;
 
 
 public class AssertBase {
-    public static void  assertCode(HttpResponse response){
+    public static void  assertCode(HttpResponse response, int expect_status){
         Assert.assertNotNull(response);
-        Assert.assertEquals(response.getStatusLine().getStatusCode(),200);
+        Assert.assertEquals(response.getStatusLine().getStatusCode(),expect_status);
     }
 }
